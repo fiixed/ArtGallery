@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
+import styled from 'styled-components/native';
 import { ImageBackground, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import {
   useFonts,
@@ -18,120 +19,119 @@ export default function App() {
   }
 
   return (
-    <ImageBackground
-      style={styles.container}
+    <Container
       source={require('./assets/images/home-page-background.png')}
       resizeMode='cover'
     >
-      <Text style={styles.screenTitle}>
-        <Text style={styles.boldedTitlePart}>Virtual </Text>Gallery
-      </Text>
-      <View style={styles.imagesContainer}>
-        <View style={styles.topContainer}>
-          <Image
-            style={styles.smallImage}
+      <ScreenTitle>
+        <BolderTitlePart>Virtual </BolderTitlePart>
+        gallery
+      </ScreenTitle>
+      <ImagesContainer>
+        <TopContainer>
+          <SmallImg
             source={require('./assets/images/home-page-digital-art1.png')}
           />
-          <Image
-            style={styles.smallImage}
+          <SmallImg
             source={require('./assets/images/home-page-digital-art2.png')}
           />
-        </View>
-        <Image
-          style={styles.bigImage}
+        </TopContainer>
+        <BigImg
           source={require('./assets/images/home-page-digital-art3.png')}
         />
-      </View>
-      <Text style={styles.introText}>Become an artist or a collector</Text>
+      </ImagesContainer>
+      <IntroText>Become an artist or a collector</IntroText>
       <TouchableOpacity>
-        <LinearGradient
-          colors={['#B24E9D', '#7e3ba1']}
+        <AuthBtn
+          colors={['#B24E9D', '#7E3BA1']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={styles.logInBtn}
         >
-          <Text style={styles.logInBtnText}>Log In</Text>
-        </LinearGradient>
+          <AuthBtnText>Log In</AuthBtnText>
+        </AuthBtn>
       </TouchableOpacity>
       <TouchableOpacity>
-        <LinearGradient
-          colors={['#B24E9D', '#7e3ba1']}
+        <AuthBtn
+          colors={['#7E3BA1', '#B24E9D']}
           start={{ x: 0, y: 0 }}
           end={{ x: 1, y: 1 }}
-          style={styles.logInBtn}
         >
-          <Text style={styles.logInBtnText}>Create account</Text>
-        </LinearGradient>
+          <AuthBtnText>Create account</AuthBtnText>
+        </AuthBtn>
       </TouchableOpacity>
       <StatusBar style='auto' />
-    </ImageBackground>
+    </Container>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  screenTitle: {
-    marginTop: 40,
-    fontSize: 36,
-    fontFamily: 'Poppins-Medium',
-    color: '#fff',
-  },
-  boldedTitlePart: {
-    fontFamily: 'Poppins-Bold',
-  },
-  imagesContainer: {
-    marginTop: 25,
-    flexDirection: 'column',
-    width: '100%',
-  },
-  topContainer: {
-    padding: 10,
-    flexDirection: 'row',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  smallImage: {
-    width: '48%',
-    borderRadius: 7,
-  },
-  bigImage: {
-    width: '96%',
-    borderRadius: 8,
-    alignSelf: 'center',
-    marginTop: 15,
-  },
-  introText: {
-    marginTop: 25,
-    fontSize: 20,
-    fontFamily: 'Poppins-Medium',
-    color: '#fff',
-  },
-  logInBtn: {
-    width: 200,
-    borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4
-    },
-    shadowOpacity: 0.54,
-    shadowRadius: 20,
-    elevation: 20, 
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    margin: 10,
-  },
-  logInBtnText: {
-    fontSize: 20, 
-    backgroundColor: 'transparent',
-    color: '#fff'
-  }
-});
+const Container = styled.ImageBackground`
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ScreenTitle = styled.Text`
+  margin-top: 40px;
+  font-size: 36px;
+  font-family: 'Poppins-Medium';
+  color: #fff;
+  margin-bottom: 25px;
+`;
+
+const BolderTitlePart = styled.Text`
+  font-size: 36px;
+  font-family: 'Poppins-Bold';
+`;
+
+const ImagesContainer = styled.View`
+  flex-direction: column;
+  width: 100%;
+`;
+
+const TopContainer = styled.View`
+  padding: 10px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const SmallImg = styled.Image`
+  width: 48%;
+  border-radius: 7px;
+`;
+
+const BigImg = styled.Image`
+  width: 96%;
+  border-radius: 8px;
+  align-self: center;
+  margin-top: 15px;
+`;
+
+const IntroText = styled.Text`
+  margin-top: 26px;
+  font-size: 20px;
+  font-family: 'Poppins_500Medium';
+  color: #fff;
+`;
+
+const AuthBtn = styled(LinearGradient)`
+  width: 200px;
+  border-radius: 8px;
+  shadow-color: #000;
+  shadow-offset: 0px 4px;
+  shadow-opacity: 0.54;
+  shadow-radius: 20px;
+  elevation: 20;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 10px;
+`;
+
+const AuthBtnText = styled.Text`
+  font-size: 20px;
+  background-color: transparent;
+  color: #fff;
+`;
