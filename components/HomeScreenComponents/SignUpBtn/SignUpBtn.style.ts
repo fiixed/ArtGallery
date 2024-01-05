@@ -5,6 +5,7 @@ export const AuthBtn = styled(LinearGradient)`
   width: 200px;
   border-radius: 8px;
   shadow-color: #000;
+  background-color: #000;
   shadow-offset: 0px 4px;
   shadow-opacity: 0.54;
   shadow-radius: 20px;
